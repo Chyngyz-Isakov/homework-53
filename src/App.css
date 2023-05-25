@@ -15,11 +15,17 @@
 .del-btn {
     width: 30px;
     height: 30px;
-    margin: auto 0;
     border: none;
     background-image: url("../images/delete.png");
     background-size: cover;
     cursor: pointer;
+}
+
+.side-wrap {
+    margin: auto 0;
+}
+.checkbox {
+    margin-right: 20px;
 }
 
 .task-wrap {

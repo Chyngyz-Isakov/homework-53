@@ -4,12 +4,18 @@ import AddTaskForm from "./AddTaskForm/AddTaskForm";
 import Task from "./Task/Task";
 import {nanoid} from "nanoid";
 
+interface ICheckbox {
+    checked: boolean;
+    id:string;
+    text:string;
+}
+
 
 const App = () => {
-    const [tasks, setTasks] = useState([
-        {text: 'Make homework-53', id: '123'},
-        {text: 'Play a games', id: '12323'},
-        {text: 'Watch films', id: '442421'},
+    const [tasks, setTasks] = useState<ICheckbox []>([
+        {text: 'Make homework-53', checked: false, id: '123'},
+        {text: 'Play a games', checked: false, id: '12323'},
+        {text: 'Watch films', checked: false, id: '442421'},
     ]);
 
     const [currentTask, setCurrentTask] = useState('')
@@ -21,7 +27,8 @@ const App = () => {
         event.preventDefault();
         const newTask = {
             id: nanoid(),
-            text: currentTask
+            text: currentTask,
+            checked:false
         };
         setTasks([...tasks, newTask]);
     };
@@ -33,6 +40,14 @@ const App = () => {
         setTasks(taskCopy);
     };
 
+    // const [checked, setChecked] = useState(true);
+
+    const changeCheckbox = (id:string) => {
+        const taskCopy = [...tasks];
+        const index = taskCopy.findIndex(task => task.id === id);
+        taskCopy[index].checked = !taskCopy[index].checked;
+        setTasks(taskCopy);
+    }
 
     return (
         <div className="App">
@@ -45,6 +60,8 @@ const App = () => {
                     <Task text={task.text}
                           onRemoveTask={() => removeTask(task.id)}
                           key={task.id}
+                          checked={task.checked}
+                          onChange={() => changeCheckbox(task.id)}
                     />
                 ))}
             </div>
