@@ -6,10 +6,9 @@ import {nanoid} from "nanoid";
 
 interface ICheckbox {
     checked: boolean;
-    id:string;
-    text:string;
+    id: string;
+    text: string;
 }
-
 
 const App = () => {
     const [tasks, setTasks] = useState<ICheckbox []>([
@@ -18,7 +17,7 @@ const App = () => {
         {text: 'Watch films', checked: false, id: '442421'},
     ]);
 
-    const [currentTask, setCurrentTask] = useState('')
+    const [currentTask, setCurrentTask] = useState('');
     const changeText = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCurrentTask(event.target.value);
     };
@@ -28,7 +27,7 @@ const App = () => {
         const newTask = {
             id: nanoid(),
             text: currentTask,
-            checked:false
+            checked: false
         };
         setTasks([...tasks, newTask]);
     };
@@ -40,14 +39,12 @@ const App = () => {
         setTasks(taskCopy);
     };
 
-    // const [checked, setChecked] = useState(true);
-
-    const changeCheckbox = (id:string) => {
+    const changeCheckbox = (id: string) => {
         const taskCopy = [...tasks];
         const index = taskCopy.findIndex(task => task.id === id);
         taskCopy[index].checked = !taskCopy[index].checked;
         setTasks(taskCopy);
-    }
+    };
 
     return (
         <div className="App">

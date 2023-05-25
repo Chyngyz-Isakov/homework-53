@@ -24,11 +24,13 @@
 .side-wrap {
     margin: auto 0;
 }
+
 .checkbox {
     margin-right: 20px;
 }
 
 .task-wrap {
+    background: #adb1b8;
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -38,6 +40,7 @@
 }
 
 .todo-wrap {
+    background: antiquewhite;
     border: #0f1111 solid 2px;
     max-width: 800px;
     margin: 40px auto;
@@ -87,4 +90,8 @@
     border-color: #e77600;
     box-shadow: rgba(228, 121, 17, .5) 0 0 3px 2px;
     outline: 0;
+}
+
+body {
+    background: url("https://www.shutterstock.com/image-vector/seamless-pattern-speech-bubble-smile-260nw-675836302.jpg");
 }
